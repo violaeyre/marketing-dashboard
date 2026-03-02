@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Breakout: Infinite - Overseas Marketing Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #0a0a0a; color: #e5e5e5; font-family: 'Microsoft YaHei', sans-serif; }
+        .gold-text { color: #c5a059; }
+        .card { background: #161616; border: 1px solid #262626; border-left: 4px solid #c5a059; }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
+            <div>
+                <h1 class="text-3xl font-bold gold-text tracking-tighter">ARENA BREAKOUT: <span class="text-white">INFINITE</span></h1>
+                <p class="text-gray-500 mt-1">S3 Season Overseas Publishing & UA Performance Review</p>
+            </div>
+            <div class="text-right">
+                <div class="text-sm text-gray-400">Status: <span class="text-green-500 font-mono">Live</span></div>
+                <div class="text-xs text-gray-600">Generated: 2026-03-01</div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="card p-4">
+                <div class="text-xs text-gray-500 uppercase tracking-widest">Average CPA (固A渠道)</div>
+                <div class="text-2xl font-bold gold-text mt-1">$4.12 <span class="text-xs text-green-500">↓ 12%</span></div>
+            </div>
+            <div class="card p-4">
+                <div class="text-xs text-gray-500 uppercase tracking-widest">European Market ROI</div>
+                <div class="text-2xl font-bold text-white mt-1">285%</div>
+            </div>
+            <div class="card p-4">
+                <div class="text-xs text-gray-500 uppercase tracking-widest">Discord Quest Completion</div>
+                <div class="text-2xl font-bold text-white mt-1">94.2k</div>
+            </div>
+            <div class="card p-4">
+                <div class="text-xs text-gray-500 uppercase tracking-widest">WhatsApp AI Response Rate</div>
+                <div class="text-2xl font-bold text-white mt-1">99.1%</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold mb-4 text-white">S3 Season User Acquisition Trend</h3>
+                <canvas id="uaChart"></canvas>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold mb-4 text-white">Channel Distribution (CPA Model)</h3>
+                <canvas id="channelChart"></canvas>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-2 card p-6">
+                <h3 class="text-lg font-semibold mb-4 gold-text">Key Takeaways & Insights</h3>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li class="flex items-start">
+                        <span class="text-gold-text mr-2">▶</span>
+                        <div><strong>S3 Mid-Season Pivot:</strong> 针对 S3 赛季中的“首次触达”促销活动进行了重点投放，欧洲市场转化率提升明显。</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-gold-text mr-2">▶</span>
+                        <div><strong>固A渠道优化:</strong> 成功降低了高竞争地区的 CPA，维持了健康的 LTV/CAC 比例。</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-gold-text mr-2">▶</span>
+                        <div><strong>Ecosystem Support:</strong> 第五次 Discord Quest 合作与 WhatsApp 知识库 AI 的集成，显著提升了新玩家留存。</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card p-6 bg-stone-900">
+                <h3 class="text-lg font-semibold mb-4 text-white">Next Steps</h3>
+                <div class="space-y-4">
+                    <div class="p-3 bg-black rounded border border-gray-800">
+                        <div class="text-xs gold-text font-bold">UPCOMING</div>
+                        <div class="text-sm mt-1">Russian Cybercafe Chain Partnership Launch</div>
+                    </div>
+                    <div class="p-3 bg-black rounded border border-gray-800">
+                        <div class="text-xs gold-text font-bold">OPTIMIZATION</div>
+                        <div class="text-sm mt-1">Retargeting Strategy for Country C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // UA Trend Chart
+        const uaCtx = document.getElementById('uaChart').getContext('2d');
+        new Chart(uaCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3 (Promo)', 'Week 4', 'Week 5'],
+                datasets: [{
+                    label: 'New Installs (Organic + Paid)',
+                    data: [12000, 15000, 28000, 21000, 19000],
+                    borderColor: '#c5a059',
+                    backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#262626' } },
+                    x: { grid: { color: '#262626' } }
+                },
+                plugins: { legend: { labels: { color: '#888' } } }
+            }
+        });
+
+        // Channel Chart
+        const channelCtx = document.getElementById('channelChart').getContext('2d');
+        new Chart(channelCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Social Media', 'Search Ads', '固A渠道 (CPA)', 'Affiliates'],
+                datasets: [{
+                    data: [35, 25, 30, 10],
+                    backgroundColor: ['#c5a059', '#8a703d', '#4d4128', '#262626'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom', labels: { color: '#888' } } }
+            }
+        });
+    </script>
+</body>
+</html>
